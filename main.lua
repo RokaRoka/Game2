@@ -22,6 +22,8 @@ Object = Class{
 		self.w = w
 		self.h = h
 
+		self.drawable = false
+
 		self.obj_i = Object.obj_i + 1
 		Object.all[self.obj_i] = self
 		Object.obj_i = self.obj_i
@@ -33,9 +35,14 @@ Object = Class{
 	drawAll = function()
 		for i = 1, Object.obj_i do
 			local current = Object.all[Object.obj_i]
-			--do this later, for now, draw hitboxes love.graphics.draw()
 			local x, y = current.pos:unpack()
-			love.graphics.rectangle("line", x, y, current.w, current.h)
+			--do this later, for now, draw hitboxes
+			if current.drawable then
+				--love.graphics.draw
+			end
+			if current.debug.drawable then
+				love.graphics.rectangle("line", x, y, current.w, current.h)
+			end
 		end
 	end
 }
@@ -47,9 +54,10 @@ Player = Class{__includes = Object,
 		Object.init(self, x, y, 32, 32)
 
 	end
-
 }
 
+--Require files
+require("color_shortcut")
 
 function love.load()
 	--initialize images
@@ -61,10 +69,25 @@ function love.load()
 	firstSnow = {}
 	firstSnow.sprBat = love.graphics.newSpriteBatch(texture.snow, 16, "static")
 	--first row
-	firstSnow.tL = firstSnow.sprBat:add(64, 64)
-	firstSnow.tM1 = firstSnow.sprBat:add(64 + 64, 64)
-	firstSnow.tM2 = firstSnow.sprBat:add(64 + 64 + 64, 64)
-	firstSnow.tR = firstSnow.sprBat:add(64 + 64 + 64 + 64, 64)
+	firstSnow.tL = firstSnow.sprBat:add(0, 0)
+	firstSnow.tM1 = firstSnow.sprBat:add(64, 0)
+	firstSnow.tM2 = firstSnow.sprBat:add(64 + 64, 0)
+	firstSnow.tR = firstSnow.sprBat:add(64 + 64 + 64, 0)
+	--second row
+	firstSnow.mL = firstSnow.sprBat:add(0, 64)
+	firstSnow.mM1 = firstSnow.sprBat:add(64, 64)
+	firstSnow.mM2 = firstSnow.sprBat:add(64 + 64, 64)
+	firstSnow.mR = firstSnow.sprBat:add(64 + 64 + 64, 64)
+	--third row
+	firstSnow.m2L = firstSnow.sprBat:add(0, 64 + 64)
+	firstSnow.m2M1 = firstSnow.sprBat:add(64, 64 +64)
+	firstSnow.m2M2 = firstSnow.sprBat:add(64 + 64, 64 + 64)
+	firstSnow.m2R = firstSnow.sprBat:add(64 + 64 + 64, 64 + 64)
+	--forth row
+	firstSnow.bL = firstSnow.sprBat:add(0, 64 + 64 + 64)
+	firstSnow.bM1 = firstSnow.sprBat:add(64, 64 + 64 + 64)
+	firstSnow.bM2 = firstSnow.sprBat:add(64 + 64, 64 + 64 + 64)
+	firstSnow.bR = firstSnow.sprBat:add(64 + 64 + 64, 64 + 64 + 64)
 	--create player
 	player = Player(50, 50)
 	--create houses
