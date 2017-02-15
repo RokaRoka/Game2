@@ -1,0 +1,389 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"frame",
+				"framei"
+			],
+			[
+				"onScreen",
+				"onScreeni"
+			],
+			[
+				"wind",
+				"windowImgs"
+			],
+			[
+				"pos",
+				"posType"
+			],
+			[
+				"key",
+				"keyboard"
+			],
+			[
+				"load",
+				"loadNPCArray"
+			],
+			[
+				"draw",
+				"draw_collide_shapes"
+			],
+			[
+				"deb",
+				"debugUI"
+			],
+			[
+				"mov",
+				"mov_spd"
+			],
+			[
+				"decide",
+				"decide_index"
+			],
+			[
+				"menu",
+				"menu_sub"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "main.lua",
+			"settings":
+			{
+				"buffer_size": 2692,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "map_state.lua",
+			"settings":
+			{
+				"buffer_size": 69,
+				"line_ending": "Windows",
+				"name": "game_map = {}"
+			}
+		},
+		{
+			"file": "conf.lua",
+			"settings":
+			{
+				"buffer_size": 3497,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "color_shortcut.lua",
+			"settings":
+			{
+				"buffer_size": 506,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "README.md",
+			"settings":
+			{
+				"buffer_size": 361,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/README.md",
+		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game1/game_state.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/PhysicsLab/window.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/PhysicsLab/main.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/main.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/RayShapeTest/main.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/ItCold/main.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/main.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/game.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/player.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/menu.lua",
+		"/C/Users/Sam/Desktop/ParentChange.cs",
+		"/C/Users/Sam/Desktop/Sam Stuff/College Projects n Other Crap/Second Year - Semester 1/Bodies/Social Outreach/Assets/Scripts/CameraFollow.cs",
+		"/C/Users/Sam/Desktop/Sam Stuff/College Projects n Other Crap/Second Year - Semester 1/Assignment1_AP.cpp",
+		"/C/Users/Sam/Desktop/Sam Stuff/College Projects n Other Crap/Second Year - Semester 1/Ship.h",
+		"/C/Users/Sam/Desktop/Sam Stuff/College Projects n Other Crap/Second Year - Semester 1/Ship.cpp",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/assignment2_files/room.h",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/assignment2_files/room.cpp",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/assignment2_files/main.cpp",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/ship.cpp",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/conf.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/event.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/phys.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/tile_info.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/room1.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/been a while/main.lua",
+		"/C/Users/Sam/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/hump-master/gamestate.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/hump-master/gamestate.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/main"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"love.graphics.print(v, px + horizontal_offset, py + 16 + (self.textHeight*(i-1)) + vertical_offset*i)",
+			"getFont",
+			"\")})\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "main.lua",
+					"settings":
+					{
+						"buffer_size": 2692,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								489,
+								489
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "map_state.lua",
+					"settings":
+					{
+						"buffer_size": 69,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								65,
+								65
+							],
+							[
+								69,
+								69
+							]
+						],
+						"settings":
+						{
+							"auto_name": "game_map = {}",
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "conf.lua",
+					"settings":
+					{
+						"buffer_size": 3497,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "color_shortcut.lua",
+					"settings":
+					{
+						"buffer_size": 506,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								249,
+								249
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "README.md",
+					"settings":
+					{
+						"buffer_size": 361,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}
