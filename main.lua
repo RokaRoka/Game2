@@ -32,16 +32,22 @@ Object = Class{
 	end,
 	all = {}, obj_i = 0,
 
+	updateAll = function(dt)
+		for i = 1, Object.obj_i do
+			local current = Object.all[Object.obj_i]
+			current:update(dt)
+		end
+	end,
+
 	drawAll = function()
 		for i = 1, Object.obj_i do
 			local current = Object.all[Object.obj_i]
-			local x, y = current.pos:unpack()
 			--do this later, for now, draw hitboxes
 			if current.drawable then
 				--love.graphics.draw
 			end
 			if current.debug.drawable then
-				love.graphics.rectangle("line", x, y, current.w, current.h)
+				love.graphics.rectangle("line", current.pos.x, current.pos.y, current.w, current.h)
 			end
 		end
 	end
@@ -52,9 +58,34 @@ Object = Class{
 Player = Class{__includes = Object,
 	init = function(self, x, y)
 		Object.init(self, x, y, 32, 32)
+	end,
 
-	end
+	--player default values
+	speed = 100
 }
+
+function Player:update(dt)
+	self:walk(dt)
+end
+
+function Player:walk(dt)
+	if love.keyboard.isDown('left') then
+        self:move(dt, -1, 0)
+    elseif love.keyboard.isDown('right') then
+        self:move(dt, 1, 0)
+    end
+    if love.keyboard.isDown('up') then
+        self:move(dt, 0, -1)
+    elseif love.keyboard.isDown('down') then
+        self:move(dt, 0, 1)
+    end
+end
+
+function Player:move(dt, dx, dy)
+	local delta = vector(dx, dy)
+	delta:normalizeInplace()
+	self.pos = self.pos + delta * self.speed * dt
+end
 
 --Require files
 require("color_shortcut")
@@ -92,6 +123,10 @@ function love.load()
 	player = Player(50, 50)
 	--create houses
 
+end
+
+function love.update(dt)
+	Object.updateAll(dt)
 end
 
 function love.draw()

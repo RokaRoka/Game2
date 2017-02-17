@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"upda",
+				"updateAll"
+			],
+			[
 				"frame",
 				"framei"
 			],
@@ -55,7 +59,7 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 2692,
+				"buffer_size": 3420,
 				"line_ending": "Windows"
 			}
 		},
@@ -184,7 +188,7 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -192,15 +196,15 @@
 					"file": "main.lua",
 					"settings":
 					{
-						"buffer_size": 2692,
+						"buffer_size": 3420,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								489,
-								489
+								1458,
+								1458
 							]
 						],
 						"settings":
@@ -209,7 +213,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 855.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -257,8 +261,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								149,
+								149
 							]
 						],
 						"settings":
