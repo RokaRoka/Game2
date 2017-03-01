@@ -59,7 +59,7 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 3420,
+				"buffer_size": 3457,
 				"line_ending": "Windows"
 			}
 		},
@@ -93,6 +93,14 @@
 			"settings":
 			{
 				"buffer_size": 361,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "window.lua",
+			"settings":
+			{
+				"buffer_size": 4365,
 				"line_ending": "Windows"
 			}
 		}
@@ -196,15 +204,15 @@
 					"file": "main.lua",
 					"settings":
 					{
-						"buffer_size": 3420,
+						"buffer_size": 3457,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1458,
-								1458
+								2054,
+								2054
 							]
 						],
 						"settings":
@@ -213,7 +221,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 855.0,
+						"translation.y": 804.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -322,6 +330,34 @@
 						"settings":
 						{
 							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "window.lua",
+					"settings":
+					{
+						"buffer_size": 4365,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4,
+								4
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

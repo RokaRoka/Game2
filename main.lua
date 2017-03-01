@@ -90,6 +90,9 @@ end
 --Require files
 require("color_shortcut")
 
+--Require systems
+require("window")
+
 function love.load()
 	--initialize images
 	texture = {}
