@@ -94,6 +94,10 @@ require("color_shortcut")
 require("window")
 
 function love.load()
+	screen = {}
+	screen.w = t.window.width
+	screen.h = t.window.height
+
 	--initialize images
 	texture = {}
 	texture.snow = love.graphics.newImage("Assets/Images/Textures/tile_snow.png")

@@ -59,7 +59,7 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 3457,
+				"buffer_size": 3526,
 				"line_ending": "Windows"
 			}
 		},
@@ -67,7 +67,7 @@
 			"file": "map_state.lua",
 			"settings":
 			{
-				"buffer_size": 69,
+				"buffer_size": 324,
 				"line_ending": "Windows",
 				"name": "game_map = {}"
 			}
@@ -100,7 +100,7 @@
 			"file": "window.lua",
 			"settings":
 			{
-				"buffer_size": 4365,
+				"buffer_size": 4356,
 				"line_ending": "Windows"
 			}
 		}
@@ -196,7 +196,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -204,15 +204,15 @@
 					"file": "main.lua",
 					"settings":
 					{
-						"buffer_size": 3457,
+						"buffer_size": 3526,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2054,
-								2054
+								3522,
+								3522
 							]
 						],
 						"settings":
@@ -221,7 +221,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 804.0,
+						"translation.y": 1598.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -231,19 +231,15 @@
 					"file": "map_state.lua",
 					"settings":
 					{
-						"buffer_size": 69,
+						"buffer_size": 324,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								65,
-								65
-							],
-							[
-								69,
-								69
+								324,
+								324
 							]
 						],
 						"settings":
@@ -323,8 +319,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								361,
+								361
 							]
 						],
 						"settings":
@@ -342,15 +338,15 @@
 					"file": "window.lua",
 					"settings":
 					{
-						"buffer_size": 4365,
+						"buffer_size": 4356,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4,
-								4
+								523,
+								523
 							]
 						],
 						"settings":
@@ -360,7 +356,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 754.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
