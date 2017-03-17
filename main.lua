@@ -93,50 +93,23 @@ require("color_shortcut")
 --Require systems
 require("window")
 
+--Gamestate scenes
+titleScreen = {}
+require("map_state") --game_map
+
 function love.load()
+	--make screen sizes accessible
 	screen = {}
-	screen.w = t.window.width
-	screen.h = t.window.height
-
-	--initialize images
-	texture = {}
-	texture.snow = love.graphics.newImage("Assets/Images/Textures/tile_snow.png")
-	--create world
-	world = love.physics.newWorld(0, 0)
-	--create textures
-	firstSnow = {}
-	firstSnow.sprBat = love.graphics.newSpriteBatch(texture.snow, 16, "static")
-	--first row
-	firstSnow.tL = firstSnow.sprBat:add(0, 0)
-	firstSnow.tM1 = firstSnow.sprBat:add(64, 0)
-	firstSnow.tM2 = firstSnow.sprBat:add(64 + 64, 0)
-	firstSnow.tR = firstSnow.sprBat:add(64 + 64 + 64, 0)
-	--second row
-	firstSnow.mL = firstSnow.sprBat:add(0, 64)
-	firstSnow.mM1 = firstSnow.sprBat:add(64, 64)
-	firstSnow.mM2 = firstSnow.sprBat:add(64 + 64, 64)
-	firstSnow.mR = firstSnow.sprBat:add(64 + 64 + 64, 64)
-	--third row
-	firstSnow.m2L = firstSnow.sprBat:add(0, 64 + 64)
-	firstSnow.m2M1 = firstSnow.sprBat:add(64, 64 +64)
-	firstSnow.m2M2 = firstSnow.sprBat:add(64 + 64, 64 + 64)
-	firstSnow.m2R = firstSnow.sprBat:add(64 + 64 + 64, 64 + 64)
-	--forth row
-	firstSnow.bL = firstSnow.sprBat:add(0, 64 + 64 + 64)
-	firstSnow.bM1 = firstSnow.sprBat:add(64, 64 + 64 + 64)
-	firstSnow.bM2 = firstSnow.sprBat:add(64 + 64, 64 + 64 + 64)
-	firstSnow.bR = firstSnow.sprBat:add(64 + 64 + 64, 64 + 64 + 64)
-	--create player
-	player = Player(50, 50)
-	--create houses
-
+	--screen.w = t.window.width
+	--screen.h = t.window.height
+	Gamestate.registerEvents()
+	Gamestate.switch(game_map)
 end
 
 function love.update(dt)
-	Object.updateAll(dt)
+	--Object.updateAll(dt)
 end
 
 function love.draw()
-	love.graphics.draw(firstSnow.sprBat, 0, 0)
-	Object.drawAll()
+	--Object.drawAll()
 end

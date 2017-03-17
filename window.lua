@@ -1,3 +1,4 @@
+title_font = love.graphics.newFont(18)
 Window = Class {
     init = function(self, x, y, w, h, winImg, title, text)
         --appearence
@@ -11,8 +12,12 @@ Window = Class {
         --self.arrow = love.graphics.newQuad(64+16, 16, 16, 16, raw_imgs.window.default:getDimensions())
 
         --strings
-        self.title = title
+
+        self.title = love.graphics.newText(title_font, title)
         self.text = text
+
+        --string info
+        self.textHeight = love.graphics.getFont():getHeight()
 
         --Add window to onScreen array
         Window.onScreeni = #Window.onScreen + 1
@@ -83,7 +88,7 @@ Window = Class {
     end
 }
 --set text window imgs
-Window.img.default = love.graphics.newImage("assets/images/window_default.png")
+Window.img.default = love.graphics.newImage("Assets/Images/Windows/window_default.png")
 
 function Window:clear()
     Window.onScreen[self.onScreeni] = nil
@@ -111,14 +116,14 @@ function Window:draw()
             horizontal_text_offset = 16 --+ 16 + 4
             vertical_text_offset = self.textHeight/4
             --print text
-            love.graphics.print(self.current, self.pos.x + horizontal_text_offset, self.pos.y + 16 + (self.textHeight*(1-1)) + vertical_text_offset*1)
+            love.graphics.print(self.title, self.pos.x + horizontal_text_offset, self.pos.y + 16 + (self.textHeight*(1-1)) + vertical_text_offset*1)
         end
         if self.title then -- FIX
             --determine spacing
             horizontal_text_offset = 16 --+ 16 + 4
-            vertical_text_offset = self.textHeight/4
-            --print text
-            love.graphics.print(self.current, self.pos.x + horizontal_text_offset, self.pos.y + 16 + (self.textHeight*(1-1)) + vertical_text_offset*1)
+            vertical_text_offset = self.textHeight/8
+            --print title
+            love.graphics.draw(self.title, self.pos.x + horizontal_text_offset, self.pos.y + 16 + (self.textHeight*(1-1)) + vertical_text_offset*1)
         end    
     end
 end
