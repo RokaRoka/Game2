@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"cre",
+				"createMapTileBatch"
+			],
+			[
+				"array",
+				"arrayData"
+			],
+			[
 				"upda",
 				"updateAll"
 			],
@@ -67,7 +75,7 @@
 			"file": "map_state.lua",
 			"settings":
 			{
-				"buffer_size": 1639,
+				"buffer_size": 2851,
 				"line_ending": "Windows",
 				"name": "game_map = {}"
 			}
@@ -196,7 +204,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -211,8 +219,8 @@
 						"selection":
 						[
 							[
-								1313,
-								1313
+								1752,
+								1752
 							]
 						],
 						"settings":
@@ -221,7 +229,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 360.0,
+						"translation.y": 999.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -231,24 +239,25 @@
 					"file": "map_state.lua",
 					"settings":
 					{
-						"buffer_size": 1639,
+						"buffer_size": 2851,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1326,
-								1326
+								827,
+								827
 							]
 						],
 						"settings":
 						{
 							"auto_name": "game_map = {}",
-							"syntax": "Packages/Lua/Lua.tmLanguage"
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 225.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
