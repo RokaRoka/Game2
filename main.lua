@@ -9,6 +9,9 @@ Gamestate = require("hump.gamestate")
 vector = require("hump.vector")
 
 --classes
+--BASE CLASS - Debug
+--PURPOSE - A base class for debuging information
+--STATUS - MODERATELY FUNCTIONAL
 Debug = Class{
 	init = function(self, text)
 		self.text = text
@@ -16,6 +19,22 @@ Debug = Class{
 	end
 }
 
+--BASE CLASS - Part
+--PURPOSE - A base class for all complex object components (Animations, Quests, Hitboxes)
+--STATUS - INCOMPLETE
+Part = Class{
+	init = function(self, parent, name)
+		self.parent = parent
+		self.name = name
+		self.active = true
+
+		self.debug = Debug("Part Created!")
+	end
+}
+
+--BASE CLASS - Object
+--PURPOSE - A base class for all  objects that appear in the world
+--STATUS - MODERATELY FUNCTIONAL
 Object = Class{
 	init = function(self, x, y, w, h)
 		self.pos = vector.new(x, y)
@@ -23,6 +42,9 @@ Object = Class{
 		self.h = h
 
 		self.drawable = false
+
+		--Leave an array for parts
+		self.parts = {}
 
 		self.obj_i = Object.obj_i + 1
 		Object.all[self.obj_i] = self
@@ -44,7 +66,7 @@ Object = Class{
 			local current = Object.all[Object.obj_i]
 			--do this later, for now, draw hitboxes
 			if current.drawable then
-				--love.graphics.draw
+				current:draw()
 			end
 			if current.debug.drawable then
 				love.graphics.rectangle("line", current.pos.x, current.pos.y, current.w, current.h)
@@ -53,11 +75,79 @@ Object = Class{
 	end
 }
 
+--CLASS - Animation
+--[[Purpose - To add visual flair and communicate information (such as walking)
+to the player visually]]
+--STATUS
+--[[INFO:
+	-speed based on frames i.e. 1 speed = 1 image per frame, 0.5 speed = 1 image per 2 frames
+	-file_path is FROM the images folder, since images should not be anywhere else within the game
+	-ANIMATIONS MUST BE PNG
+]] 
+Animation = Class{__includes = Part,
+	init = function(self, parent, name, file_path, frames, speed)
+		Part.init(self, parent, name)
+		self.file_path = file_path
+		self.images = {}
+		self.frames = frames
+		self.speed = speed or 1
+		
+		self.loaded = false
+		self.current = 1
+		self.playing = false
+	end,
+}
+
+function Animation:load()
+	for i = 1, self.frames do
+		self.images[i] = love.graphics.newImage("Assets/Images"..self.file_path..i..".png")
+	end
+	self.loaded = true
+end
+
+function Animation:play()
+	self.playing = true
+end
+
+function Animation:pause()
+	self.playing = false
+end
+
+function Animation:draw()
+	local current_frame = self.images[math.floor(self.current * self.speed)]
+	love.graphics.draw(current_frame, self.parent.pos.x, self.parent.pos.y)
+	--if not playing, pause the frame
+	if self.playing then
+		self.current = self.current + 1
+	end
+end
+
+--CLASS - Quest
+--[[PURPOSE - Objects that control story beats.]]
+--STATUS - INCOMPLETE
+Quest = {__includes = Part,
+	init = function(self, parent, name, requirement)
+		Part.init(self, parent, name)
+		self.requirement = requirement
+	end
+}
+
 --TODO CLASS Background = Class{}
 
+--CLASS - Player
+--[[PURPOSE - Allows the player to interact with the game world and
+enact most, if not all, mechanics]]
+--MECHANICS - Walk (incomplete) and Talk (incomplete)
+--STATUS - INCOMPLETE
 Player = Class{__includes = Object,
 	init = function(self, x, y)
 		Object.init(self, x, y, 32, 32)
+
+		self.currentAnim = nil
+		self.parts[1] = Animation(self, "Walk", "/Player/player_walk", 4, 0.5)
+		self.parts[1]:load()
+		self.currentAnim = self.parts[1]
+		self.currentAnim:play()
 	end,
 
 	--player default values
@@ -87,16 +177,21 @@ function Player:move(dt, dx, dy)
 	self.pos = self.pos + delta * self.speed * dt
 end
 
+function Player:draw()
+	if self.currentAnim then
+		self.currentAnim:draw()
+	end
+end
+
 --Require files
 require("color_shortcut")
 
 --Require systems
-require("window")
+--require("window")
 
 function love.load()
 	screen = {}
-	screen.w = t.window.width
-	screen.h = t.window.height
+	screen.w, screen.h = love.graphics.getDimensions()
 
 	--initialize images
 	texture = {}
