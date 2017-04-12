@@ -63,55 +63,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "main.lua",
-			"settings":
-			{
-				"buffer_size": 2411,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "map_state.lua",
-			"settings":
-			{
-				"buffer_size": 2851,
-				"line_ending": "Windows",
-				"name": "game_map = {}"
-			}
-		},
-		{
-			"file": "conf.lua",
-			"settings":
-			{
-				"buffer_size": 3497,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "color_shortcut.lua",
-			"settings":
-			{
-				"buffer_size": 506,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "README.md",
-			"settings":
-			{
-				"buffer_size": 361,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "window.lua",
-			"settings":
-			{
-				"buffer_size": 4520,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -137,11 +88,16 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/game2.sublime-project",
+		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/main.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/window.lua",
 		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/README.md",
+		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/color_shortcut.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/conf.lua",
+		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/map_state.lua",
 		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game1/game_state.lua",
 		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/PhysicsLab/window.lua",
 		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/PhysicsLab/main.lua",
-		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/main.lua",
 		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/RayShapeTest/main.lua",
 		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/ItCold/main.lua",
 		"/C/Users/Sam/Desktop/Sam Stuff/Programmin/Lua Love/Testin/main.lua",
@@ -204,172 +160,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "main.lua",
-					"settings":
-					{
-						"buffer_size": 2411,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1752,
-								1752
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 999.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "map_state.lua",
-					"settings":
-					{
-						"buffer_size": 2851,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								827,
-								827
-							]
-						],
-						"settings":
-						{
-							"auto_name": "game_map = {}",
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "conf.lua",
-					"settings":
-					{
-						"buffer_size": 3497,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								149,
-								149
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "color_shortcut.lua",
-					"settings":
-					{
-						"buffer_size": 506,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								249,
-								249
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "README.md",
-					"settings":
-					{
-						"buffer_size": 361,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								361,
-								361
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Markdown/Markdown.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "window.lua",
-					"settings":
-					{
-						"buffer_size": 4520,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1084,
-								1084
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],

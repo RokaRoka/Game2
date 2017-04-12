@@ -20,11 +20,17 @@ function game_map:init()
 	texture[4] = love.graphics.newQuad(64, 64, 64, 64, texture.img:getDimensions())
 	texture.grass = texture[4]
 
-	map1 = {
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row1
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row2
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row3
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1} --row4
+	map1 = { --maps are 14 by 10
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row1
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row2
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row3
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row4
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row5
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row6
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row7
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row8
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row9
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1} --row10
 	}
 end
 
@@ -83,10 +89,10 @@ end
 
 function createMapTileBatch(arrayData)
 	local tileBatch = {}
-	tileBatch.sprBat = love.graphics.newSpriteBatch(texture.snow, 64, "static")
+	tileBatch.sprBat = love.graphics.newSpriteBatch(texture.img, 140, "static")
 	for k, v in pairs(arrayData) do
 		for j, i in pairs(v) do
-			tileBatch.sprBat:add(texture[i], (j*64)-64, k)
+			tileBatch.sprBat:add(texture[i], (j*64)-64, (k * 64) -64)
 		end
 	end
 
