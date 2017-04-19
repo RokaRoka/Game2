@@ -17,10 +17,13 @@ Debug = Class{
 }
 
 Object = Class{
-	init = function(self, x, y, w, h)
+	init = function(self, x, y, w, h, interact)
 		self.pos = vector.new(x, y)
 		self.w = w
 		self.h = h
+
+		--Interactable, if the object has it
+		self.interact = interact or nil
 
 		self.drawable = false
 
@@ -103,7 +106,7 @@ function love.load()
 	--screen.w = t.window.width
 	--screen.h = t.window.height
 	Gamestate.registerEvents()
-	Gamestate.switch(game_map)
+	Gamestate.switch(debug_room)
 end
 
 function love.update(dt)
