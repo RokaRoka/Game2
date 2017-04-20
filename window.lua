@@ -1,4 +1,5 @@
 title_font = love.graphics.newFont(18)
+text_font = love.graphics.newFont(14)
 Window = Class {
     init = function(self, x, y, w, h, winImg, parent)
         --appearence
@@ -78,8 +79,10 @@ Window.img.default = love.graphics.newImage("Assets/Images/Windows/window_defaul
 
 function Window:clear()
     Window.onScreen[self.onScreeni] = nil
+    if self.parent then
+        self.parent = nil
+    end
     self = nil
-    text2 = "Window cleared!"
 end
 
 function Window:draw()
@@ -129,21 +132,25 @@ Window_Dialogue = Class {
         self.text = t_text
         --self.title = love.graphics.newText(title_font, title)
 
-        --string info
-        self.textHeight = love.graphics.getFont():getHeight()
-
         --current dialogue 
         self.index = 1
 
         --text scrolling values
         self.count = 1
         self.current = string.char(self.text[self.index]:byte())
+        self.current_draw = love.graphics.newText(text_font, self.current)
+
+        --string info
+        self.textHeight = self.current_draw:getHeight()
 
         --Window creation (x, y, w, h, winImg, parent)
         self.window = Window(100, 600 - 160, 600, 128, nil, self)
-    end,
 
-    Speed = 10
+        --make the player busy
+        player.busy = true
+    end,
+    --Static variables
+    Speed = 10, DW_Current = nil
 }
 
 function Window_Dialogue:update(dt)
@@ -169,7 +176,7 @@ function Window_Dialogue:draw()
             horizontal_text_offset = 16 --+ 16 + 4
             vertical_text_offset = self.textHeight/4
             --print text
-            love.graphics.print(self.current, self.window.pos.x + horizontal_text_offset, self.window.pos.y + 16 + (self.textHeight*(1-1)) + vertical_text_offset*1)
+            love.graphics.draw(self.current_draw, self.window.pos.x + horizontal_text_offset, self.window.pos.y + 16 + (self.textHeight*(1-1)) + vertical_text_offset*1)
         end
         if self.title then -- FIX
             --determine spacing
@@ -185,6 +192,7 @@ function Window_Dialogue:advanceText(dt, index)
     if self.current ~= self.text[index] then
         self.count = self.count + (self.Speed * dt)
         self.current = self.text[index]:sub(1, math.floor(self.count))
+        self.current_draw = love.graphics.newText(text_font, self.current)
     elseif love.keyboard.isDown('z') then
         if index < #self.text then
             self:loadNext()
@@ -207,7 +215,9 @@ end
 
 function Window_Dialogue:clear()
     self.window:clear()
-    self = nil
+    Window_Dialogue.DW_Current = nil
+    self.current = ""
+    player.busy = false
 end
 
 Window_Pause = Class {

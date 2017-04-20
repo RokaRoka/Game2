@@ -61,6 +61,7 @@ Object = Class{
 Player = Class{__includes = Object,
 	init = function(self, x, y)
 		Object.init(self, x, y, 32, 32)
+		self.busy = false
 	end,
 
 	--player default values
@@ -68,7 +69,7 @@ Player = Class{__includes = Object,
 }
 
 function Player:update(dt)
-	self:walk(dt)
+	if player ~= player.busy then self:walk(dt) end
 end
 
 function Player:walk(dt)
@@ -106,7 +107,7 @@ function love.load()
 	--screen.w = t.window.width
 	--screen.h = t.window.height
 	Gamestate.registerEvents()
-	Gamestate.switch(debug_room)
+	Gamestate.switch(game_map)
 end
 
 function love.update(dt)

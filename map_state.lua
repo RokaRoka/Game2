@@ -73,19 +73,31 @@ function game_map:enter()
 	--create interactables
 
 	--create title of area
-	area_title = "South End"
-	area_window = Window((800/2) - (128/2), 0, 128, 48, nil, area_title)
+	area_window = Window_Title("South End")
+
+	--dialogue stuff
+	Window_Dialogue.DW_Current = Window_Dialogue(
+		{"Home... Come home now. It is time to leave.",
+		"Do not make me wait...",
+		"Walk. You can talk with the locals with the Z key."}
+	)
 end
 
 function game_map:update(dt)
-	Window.updateAll(dt)
 	Object.updateAll(dt)
+	if Window_Dialogue.DW_Current then
+		Window_Dialogue.DW_Current:update(dt)
+	end
+	--Window.updateAll(dt)
 end
 
 function game_map:draw()
 	love.graphics.draw(BG_southend.sprBat, 0, 0)
-	Window.drawAll()
 	Object.drawAll()
+	Window.drawAll()
+	if Window_Dialogue.DW_Current then
+		Window_Dialogue.DW_Current:draw()
+	end
 end
 
 
@@ -141,26 +153,29 @@ function debug_room:enter()
 	BG_debug = createMapTileBatch(map1) 
 
 	--create title of area
-	area_title = "Debug"
 	area_window = Window_Title("Debug")
 
 	--debug here
 	--dialogue window(t_text, name)
-	DW_test = Window_Dialogue(
+	Window_Dialogue.DW_Current = Window_Dialogue(
 		{"Hi! I am a test.",
 		"Dialogue ain't easy, huh?"}
 	)
 end
 
 function debug_room:update(dt)
-	DW_test:update(dt)
-	--Window.updateAll(dt)
 	Object.updateAll(dt)
+	if Window_Dialogue.DW_Current then
+		Window_Dialogue.DW_Current:update(dt)
+	end
+	--Window.updateAll(dt)
 end
 
 function debug_room:draw()
 	love.graphics.draw(BG_debug.sprBat, 0, 0)
-	Window.drawAll()
-	DW_test:draw()
 	Object.drawAll()
+	Window.drawAll()
+	if Window_Dialogue.DW_Current then
+		Window_Dialogue.DW_Current:draw()
+	end
 end
