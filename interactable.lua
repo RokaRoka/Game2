@@ -5,8 +5,14 @@ Interactable = Class{
 	end
 }
 
+function Interactable:checkAction(dt)
+	if love.keyboard.isDown('z') and not player.busy then
+		
+	end
+end
+
 function Interactable:response()
-	--Whether it is dialogue
+	--Whether it is dialogue or interactable
 end
 
 Talkable = Class{__includes = Interactable,

@@ -69,7 +69,7 @@ Player = Class{__includes = Object,
 }
 
 function Player:update(dt)
-	if player ~= player.busy then self:walk(dt) end
+	if not player.busy then self:walk(dt) end
 end
 
 function Player:walk(dt)
@@ -91,6 +91,12 @@ function Player:move(dt, dx, dy)
 	self.pos = self.pos + delta * self.speed * dt
 end
 
+NPC = Class{__includes = Object,
+	init = function(self, x, y, w, h, dialogue)
+		Object.init(x, y, w, h, Interactable(5, dialogue))
+	end
+}
+
 --Require files
 require("color_shortcut")
 
@@ -99,6 +105,7 @@ require("window")
 
 --Gamestate scenes
 titleScreen = {}
+titleScreen = Gamestate.new()
 require("map_state") --game_map
 
 function love.load()
