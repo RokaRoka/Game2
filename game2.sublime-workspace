@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"Physics",
+				"PhysicsBody"
+			],
+			[
 				"cre",
 				"createMapTileBatch"
 			],
@@ -67,7 +71,7 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 2712,
+				"buffer_size": 4900,
 				"line_ending": "Windows"
 			}
 		},
@@ -75,7 +79,15 @@
 			"file": "map_state.lua",
 			"settings":
 			{
-				"buffer_size": 5561,
+				"buffer_size": 5790,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "window.lua",
+			"settings":
+			{
+				"buffer_size": 7015,
 				"line_ending": "Windows"
 			}
 		},
@@ -83,7 +95,24 @@
 			"file": "interactable.lua",
 			"settings":
 			{
-				"buffer_size": 686,
+				"buffer_size": 608,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "objectPhysics.lua",
+			"settings":
+			{
+				"buffer_size": 1438,
+				"line_ending": "Windows",
+				"name": "PhysicsBody = Class {"
+			}
+		},
+		{
+			"file": "collision_masks.lua",
+			"settings":
+			{
+				"buffer_size": 264,
 				"line_ending": "Windows"
 			}
 		},
@@ -200,15 +229,15 @@
 					"file": "main.lua",
 					"settings":
 					{
-						"buffer_size": 2712,
+						"buffer_size": 4900,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								987,
-								987
+								4513,
+								4513
 							]
 						],
 						"settings":
@@ -217,7 +246,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 358.0,
+						"translation.y": 2401.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -227,15 +256,15 @@
 					"file": "map_state.lua",
 					"settings":
 					{
-						"buffer_size": 5561,
+						"buffer_size": 5790,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								763,
-								763
+								5014,
+								5014
 							]
 						],
 						"settings":
@@ -244,25 +273,53 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1009.0,
+						"translation.y": 2182.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "interactable.lua",
+					"file": "window.lua",
 					"settings":
 					{
-						"buffer_size": 686,
+						"buffer_size": 7015,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								686,
-								686
+								3105,
+								3105
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 624.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "interactable.lua",
+					"settings":
+					{
+						"buffer_size": 608,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								419,
+								419
 							]
 						],
 						"settings":
@@ -271,13 +328,67 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 114.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
+					"file": "objectPhysics.lua",
+					"settings":
+					{
+						"buffer_size": 1438,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1268,
+								1268
+							]
+						],
+						"settings":
+						{
+							"auto_name": "PhysicsBody = Class {",
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "collision_masks.lua",
+					"settings":
+					{
+						"buffer_size": 264,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								264,
+								264
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "conf.lua",
 					"settings":
 					{

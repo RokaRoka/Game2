@@ -149,8 +149,16 @@ end
 function debug_room:enter()
 	--create world
 	world = love.physics.newWorld(0, 0)
+	--set callbacks
+	world:setCallbacks(beginContact, endContact)
+
 
 	BG_debug = createMapTileBatch(map1) 
+
+	--create player
+	player = Player(50, 50)
+	--create NPCS
+	NPC_npc1 = NPC(200, 100, 32, 32, {"Hiya, I'm an NPC!", "I have an interesting life!"})
 
 	--create title of area
 	area_window = Window_Title("Debug")
@@ -161,9 +169,11 @@ function debug_room:enter()
 		{"Hi! I am a test.",
 		"Dialogue ain't easy, huh?"}
 	)
+
 end
 
 function debug_room:update(dt)
+	world:update(dt)
 	Object.updateAll(dt)
 	if Window_Dialogue.DW_Current then
 		Window_Dialogue.DW_Current:update(dt)
