@@ -41,7 +41,7 @@ Object = Class{
 		self.w = w
 		self.h = h
 
-		self.drawable = false
+		self.drawable = true
 
 		--Leave an array for parts
 		self.parts = {}
@@ -75,6 +75,34 @@ Object = Class{
 	end
 }
 
+--CLASS - Image
+--[[Purpose - To add visual flair or communicate debug information (such as walking)
+to the player visually]]
+--STATUS
+--[[INFO:
+	-filepath is FROM the images folder, since images should not be anywhere else within the game
+	-IMAGES MUST BE PNG
+]]
+Image = Class{__includes = Part,
+	init = function(self, parent, name, filepath)
+		Part.init(self, parent, name)
+		self.filepath = filepath
+		self.image = nil
+
+		self.loaded = false
+	end
+
+}
+
+function Image:load()
+	self.image = love.graphics.newImage("Assets/Images"..self.filepath..".png")
+	self.loaded = true
+end
+
+function Image:draw()
+	if self.loaded then love.graphics.draw(self.image, self.parent.pos.x, self.parent.pos.y) end
+end
+
 --CLASS - Animation
 --[[Purpose - To add visual flair and communicate information (such as walking)
 to the player visually]]
@@ -85,12 +113,12 @@ to the player visually]]
 	-ANIMATIONS MUST BE PNG
 ]] 
 Animation = Class{__includes = Part,
-	init = function(self, parent, name, file_path, frames, speed)
+	init = function(self, parent, name, filepath, frames, speed)
 		Part.init(self, parent, name)
-		self.file_path = file_path
+		self.filepath = filepath
 		self.images = {}
 		self.frames = frames
-		self.speed = speed or 1
+		self.speed = speed
 		
 		self.loaded = false
 		self.current = 1
@@ -100,7 +128,7 @@ Animation = Class{__includes = Part,
 
 function Animation:load()
 	for i = 1, self.frames do
-		self.images[i] = love.graphics.newImage("Assets/Images"..self.file_path..i..".png")
+		self.images[i] = love.graphics.newImage("Assets/Images"..self.filepath..i..".png")
 	end
 	self.loaded = true
 end
@@ -114,11 +142,13 @@ function Animation:pause()
 end
 
 function Animation:draw()
-	local current_frame = self.images[math.floor(self.current * self.speed)]
+	local current_frame = self.images[math.floor(self.current)]
 	love.graphics.draw(current_frame, self.parent.pos.x, self.parent.pos.y)
 	--if not playing, pause the frame
 	if self.playing then
-		self.current = self.current + 1
+		self.current = self.current + (0.1 * self.speed)
+		self.parent.debug.text = self.current
+		if self.current > self.frames + 1 then self.current = 1 end
 	end
 end
 
@@ -143,8 +173,14 @@ Player = Class{__includes = Object,
 	init = function(self, x, y)
 		Object.init(self, x, y, 32, 32)
 
+		--test image for drawing (parent, name, filepath)
+		--self.debug_img = Image(self, "DebugImage", "/Player/player_walk1")
+		--self.debug_img:load()
+
+		--walking anim
 		self.currentAnim = nil
-		self.parts[1] = Animation(self, "Walk", "/Player/player_walk", 4, 0.5)
+		--Anim (parent, name, filepath, frames, speed (discontinued))
+		self.parts[1] = Animation(self, "Walk", "/Player/player_walk", 4, 0.75)
 		self.parts[1]:load()
 		self.currentAnim = self.parts[1]
 		self.currentAnim:play()
@@ -178,9 +214,12 @@ function Player:move(dt, dx, dy)
 end
 
 function Player:draw()
-	if self.currentAnim then
+	if self.debug_img and self.debug.drawable then
+		self.debug_img:draw()
+	elseif self.currentAnim then
 		self.currentAnim:draw()
 	end
+	love.graphics.print(self.debug.text, 600, 10)
 end
 
 --Require files
