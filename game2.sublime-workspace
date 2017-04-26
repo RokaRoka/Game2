@@ -67,26 +67,16 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 7154,
+				"buffer_size": 8585,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "shaders.lua",
-			"settings":
-			{
-				"buffer_size": 226,
-				"encoding": "UTF-8",
-				"line_ending": "Windows",
-				"name": "function shaderPile()"
 			}
 		},
 		{
 			"file": "map_state.lua",
 			"settings":
 			{
-				"buffer_size": 324,
+				"buffer_size": 5790,
 				"line_ending": "Windows",
 				"name": "game_map = {}"
 			}
@@ -111,7 +101,7 @@
 			"file": "window.lua",
 			"settings":
 			{
-				"buffer_size": 4356,
+				"buffer_size": 7015,
 				"line_ending": "Windows"
 			}
 		},
@@ -157,6 +147,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Sam/Desktop/Stuff of Sam/Projects/Love 2D/Game2/shaders.lua",
 		"/C/Users/Sam/Desktop/Stuff of Sam/Projects/Love 2D/Game1/main.lua",
 		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/README.md",
 		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game1/game_state.lua",
@@ -234,15 +225,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7154,
+						"buffer_size": 8585,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4085,
-								4085
+								6768,
+								6768
 							]
 						],
 						"settings":
@@ -251,7 +242,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2129.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -259,48 +250,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "shaders.lua",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 226,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								226,
-								226
-							]
-						],
-						"settings":
-						{
-							"auto_name": "function shaderPile()",
-							"syntax": "Packages/Lua/Lua.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "map_state.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 324,
+						"buffer_size": 5790,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								324,
-								324
+								0,
+								0
 							]
 						],
 						"settings":
@@ -312,11 +274,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": "color_shortcut.lua",
 					"semi_transient": false,
 					"settings":
@@ -340,11 +302,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "README.md",
 					"semi_transient": false,
 					"settings":
@@ -368,24 +330,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "window.lua",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4356,
+						"buffer_size": 7015,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								523,
-								523
+								0,
+								0
 							]
 						],
 						"settings":
@@ -398,11 +360,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "conf.lua",
 					"semi_transient": false,
 					"settings":
@@ -428,7 +390,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

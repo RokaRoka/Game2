@@ -1,5 +1,7 @@
+title_font = love.graphics.newFont(18)
+text_font = love.graphics.newFont(14)
 Window = Class {
-    init = function(self, x, y, w, h, winImg, title, text)
+    init = function(self, x, y, w, h, winImg, parent)
         --appearence
         self.pos = vector.new(x or 0, y or 0)
         self.w = w or screen.w; self.h = h or screen.h
@@ -9,10 +11,6 @@ Window = Class {
         --spritebatch!
         self.windowBat = Window.windowSprBat(self.w, self.h, self.winImg)
         --self.arrow = love.graphics.newQuad(64+16, 16, 16, 16, raw_imgs.window.default:getDimensions())
-
-        --strings
-        self.title = title
-        self.text = text
 
         --Add window to onScreen array
         Window.onScreeni = #Window.onScreen + 1
@@ -64,12 +62,6 @@ Window = Class {
     --window arrays
     onScreen = {}, onScreeni = 0,
 
-    updateAll = function(dt)
-        for i = 1, #Window.onScreen, 1 do
-            Window.onScreen[i]:update(dt)
-        end
-    end,
-
     drawAll = function()
         for i = 1, #Window.onScreen, 1 do
             Window.onScreen[i]:draw()
@@ -83,21 +75,94 @@ Window = Class {
     end
 }
 --set text window imgs
-Window.img.default = love.graphics.newImage("assets/images/window_default.png")
+Window.img.default = love.graphics.newImage("Assets/Images/Windows/window_default.png")
 
 function Window:clear()
     Window.onScreen[self.onScreeni] = nil
+    if self.parent then
+        self.parent = nil
+    end
     self = nil
-    text2 = "Window cleared!"
-end
-
-function Window:update(dt)
-    
 end
 
 function Window:draw()
     --draw spr bat
     love.graphics.draw(self.windowBat, self.pos:unpack())
+    
+end
+
+Window_Title = Class {
+    init = function(self, title)
+        --string
+        self.title = love.graphics.newText(title_font, title)
+
+        --string info
+        self.textHeight = love.graphics.getFont():getHeight()
+
+        --Window creation (x, y, w, h, winImg, parent)
+        self.window = Window((800/2) - (128/2), 0, 128, 48, nil, self)
+    end, 
+}
+
+function Window_Title:draw()
+    --draw text (if any)
+    
+    local horizontal_text_offset
+    local vertical_text_offset
+
+    if self.title then
+        --determine spacing
+        horizontal_text_offset = 16 --+ 16 + 4
+        vertical_text_offset = self.textHeight/8
+        --print title
+        love.graphics.draw(self.title, self.window.pos.x + horizontal_text_offset, self.window.pos.y + 16 + (self.textHeight*(1-1)) + vertical_text_offset*1)
+    end
+end
+
+function Window_Title:clear()
+    self.window:clear()
+    self = nil
+end
+
+--WINDOW DIALOGUE CLASS
+Window_Dialogue = Class {
+    init = function(self, t_text, title)
+        --strings
+
+        self.text = t_text
+        --self.title = love.graphics.newText(title_font, title)
+
+        --current dialogue 
+        self.index = 1
+
+        --text scrolling values
+        self.count = 1
+        self.current = string.char(self.text[self.index]:byte())
+        self.current_draw = love.graphics.newText(text_font, self.current)
+
+        --string info
+        self.textHeight = self.current_draw:getHeight()
+
+        --Window creation (x, y, w, h, winImg, parent)
+        self.window = Window(100, 600 - 160, 600, 128, nil, self)
+
+        --make the player busy
+        player.busy = true
+    end,
+    --Static variables
+    Speed = 10, DW_Current = nil
+}
+
+function Window_Dialogue:update(dt)
+    if love.keyboard.isDown('x') then
+        Window_Dialogue.Speed = 30
+    else
+        Window_Dialogue.Speed = 10
+    end
+    self:advanceText(dt, self.index)
+end
+
+function Window_Dialogue:draw()
     --draw text (if any)
     
     local horizontal_text_offset
@@ -111,21 +176,49 @@ function Window:draw()
             horizontal_text_offset = 16 --+ 16 + 4
             vertical_text_offset = self.textHeight/4
             --print text
-            love.graphics.print(self.current, self.pos.x + horizontal_text_offset, self.pos.y + 16 + (self.textHeight*(1-1)) + vertical_text_offset*1)
+            love.graphics.draw(self.current_draw, self.window.pos.x + horizontal_text_offset, self.window.pos.y + 16 + (self.textHeight*(1-1)) + vertical_text_offset*1)
         end
         if self.title then -- FIX
             --determine spacing
             horizontal_text_offset = 16 --+ 16 + 4
-            vertical_text_offset = self.textHeight/4
-            --print text
-            love.graphics.print(self.current, self.pos.x + horizontal_text_offset, self.pos.y + 16 + (self.textHeight*(1-1)) + vertical_text_offset*1)
+            vertical_text_offset = self.textHeight/8
+            --print title
+            love.graphics.draw(self.title, self.window.pos.x + horizontal_text_offset, self.window.pos.y + 16 + (self.textHeight*(1-1)) + vertical_text_offset*1)
         end    
     end
 end
 
-Window_Dialogue = Class {
-    
-}
+function Window_Dialogue:advanceText(dt, index)
+    if self.current ~= self.text[index] then
+        self.count = self.count + (self.Speed * dt)
+        self.current = self.text[index]:sub(1, math.floor(self.count))
+        self.current_draw = love.graphics.newText(text_font, self.current)
+    elseif love.keyboard.isDown('z') then
+        if index < #self.text then
+            self:loadNext()
+        elseif index == #self.text then
+            self:clear()
+        end
+    end
+    --[[
+    if self.current == self.texts[index] and not self.arrow_anim.playing then
+        self.arrow_anim:play()
+    end
+    ]]
+end
+
+function Window_Dialogue:loadNext()
+    self.index = self.index + 1
+    self.count = 1
+    self.current = ""
+end
+
+function Window_Dialogue:clear()
+    self.window:clear()
+    Window_Dialogue.DW_Current = nil
+    self.current = ""
+    player.busy = false
+end
 
 Window_Pause = Class {
     
