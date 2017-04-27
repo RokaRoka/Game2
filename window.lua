@@ -193,12 +193,12 @@ function Window_Dialogue:advanceText(dt, index)
         self.count = self.count + (self.Speed * dt)
         self.current = self.text[index]:sub(1, math.floor(self.count))
         self.current_draw = love.graphics.newText(text_font, self.current)
-    elseif love.keyboard.isDown('z') then
-        if index < #self.text then
-            self:loadNext()
-        elseif index == #self.text then
-            self:clear()
-        end
+    elseif key_press.check("z") then
+       if index < #self.text then
+           self:loadNext()
+       elseif index == #self.text then
+           self:clear()
+       end
     end
     --[[
     if self.current == self.texts[index] and not self.arrow_anim.playing then

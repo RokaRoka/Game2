@@ -147,6 +147,8 @@ function debug_room:init()
 end
 
 function debug_room:enter()
+	require("lightingShader")
+
 	--create world
 	world = love.physics.newWorld(0, 0)
 	--set callbacks
@@ -159,6 +161,7 @@ function debug_room:enter()
 	player = Player(50, 50)
 	--create NPCS
 	NPC_npc1 = NPC(200, 100, 32, 32, {"Hiya, I'm an NPC!", "I have an interesting life!"})
+	--shaderPointLight:send("light_pos", {NPC_npc1.pos:unpack()})
 
 	--create title of area
 	area_window = Window_Title("Debug")

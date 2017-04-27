@@ -27,3 +27,23 @@ Leverable = Class{__includes = Interactable,
 	end,
 	Type = "Leverable"
 }
+
+--CLASS - Quest
+--[[PURPOSE - Objects that control story beats/level progression.]]
+--STATUS - INCOMPLETE
+Quest = {__includes = Part,
+	init = function(self, parent, name, completed)
+		Part.init(self, parent, name)
+		
+		self.completed = false
+	end,
+	signals = Signal.new()
+}
+
+function Quest:loadSignals()
+	self.signal:register(self.name, self:complete()) --add completion function
+end
+
+function Quest:complete()
+	self.completed = true
+end

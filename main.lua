@@ -7,6 +7,7 @@
 Class = require("hump.class")
 Gamestate = require("hump.gamestate")
 vector = require("hump.vector")
+Signal = require("hump.signal")
 
 --preliminary includes
 require("collision_masks")
@@ -16,16 +17,10 @@ require("color_shortcut")
 require("baseClasses")
 require("physicsClasses")
 require("graphicsClasses")
+require("interactable")
 
---CLASS - Quest
---[[PURPOSE - Objects that control story beats.]]
---STATUS - INCOMPLETE
-Quest = {__includes = Part,
-	init = function(self, parent, name, requirement)
-		Part.init(self, parent, name)
-		self.requirement = requirement
-	end
-}
+--Require systems
+require("window")
 
 --CLASS - Player
 --[[PURPOSE - Allows the player to interact with the game world and
@@ -90,11 +85,12 @@ function Player:move(dt, dx, dy)
 	newPy = math.floor(newPy)
 
 	self.pos = vector.new(newPx, newPy)
+	--if newPx ~= 0 or newPy ~= 0 then newShader:send("player_pos", player.pos:unpack()) end
 	--self.pos = self.pos + delta * self.speed * dt
 end
 
 function Player:checkAction(dt)
-	if self.in_range_of[1] and love.keyboard.isDown('z') then
+	if self.in_range_of[1] and key_press.check("z") then
 		self.debug.text = "Player talking!"
 		self.in_range_of[1].interact:response()
 	end
@@ -126,10 +122,6 @@ function NPC:draw()
 	--draw npc?
 end
 
---Require systemss
-require("window")
-require("interactable")
-
 --Gamestate scenes
 titleScreen = {}
 titleScreen = Gamestate.new()
@@ -142,8 +134,9 @@ function love.load()
 	--screen.w = t.window.width
 	--screen.h = t.window.height
 
-	key_held = {}
-	key_held = { a = false,
+	love.keyboard.setKeyRepeat(true)
+
+	key_press = { a = false,
 		b = false,
 		c = false,
 		d = false,
@@ -168,7 +161,15 @@ function love.load()
 		w = false,
 		x = false,
 		y = false,
-		z = false
+		z = false,
+		check = function(key)
+			if key_press[key] then
+				key_press[key] = false
+				return true
+			else
+				return false
+			end
+		end
 	}
 
 	Gamestate.registerEvents()
@@ -184,12 +185,17 @@ function love.draw()
 end
 
 function love.keypressed(key, scancode, isRepeat)
-	key_held[key] = true
-	player.debug.text = player.debug.text..key
+	if not isRepeat then
+		key_press[key] = true
+		player.debug.text = player.debug.text..key
+	else
+		key_press[key] = false
+		player.debug.text = player.debug.text..key.." Held."
+	end
 end
 
 function love.keyreleased(key, scancode, isRepeat)
-	key_held[key] = false
+	key_press[key] = false
 	player.debug.text = key.." released."
 end
 
