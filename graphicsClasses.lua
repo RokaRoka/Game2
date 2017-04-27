@@ -23,7 +23,7 @@ function Image:load()
 end
 
 function Image:draw()
-	if self.loaded then love.graphics.draw(self.image, self.parent.pos.x, self.parent.pos.y) end
+	if self.loaded then love.graphics.draw(self.image, self.parent.pos.x - (self.parent.w/2), self.parent.pos.y - (self.parent.h/2)) end
 end
 
 --CLASS - Animation
@@ -66,11 +66,11 @@ end
 
 function Animation:draw()
 	local current_frame = self.images[math.floor(self.current)]
-	love.graphics.draw(current_frame, self.parent.pos.x, self.parent.pos.y)
+	love.graphics.draw(current_frame, self.parent.pos.x - (self.parent.w/2), self.parent.pos.y - (self.parent.h/2))
 	--if not playing, pause the frame
 	if self.playing then
 		self.current = self.current + (0.1 * self.speed)
-		self.parent.debug.text = self.current
+		--self.parent.debug.text = self.current
 		if self.current > self.frames + 1 then self.current = 1 end
 	end
 end

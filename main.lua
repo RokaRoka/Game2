@@ -10,168 +10,12 @@ vector = require("hump.vector")
 
 --preliminary includes
 require("collision_masks")
-require("objectPhysics")
+require("color_shortcut")
 
 --Classes
-
---BASE CLASS - Debug
---PURPOSE - A base class for debuging information
---STATUS - MODERATELY FUNCTIONAL
-Debug = Class{
-	init = function(self, text)
-		self.text = text
-		self.drawable = true
-
-		self.color = {75, 75, 200, 255}
-	end
-}
-
---BASE CLASS - Part
---PURPOSE - A base class for all complex object components (Animations, Quests, Hitboxes)
---STATUS - INCOMPLETE
-Part = Class{
-	init = function(self, parent, name)
-		self.parent = parent
-		self.name = name
-		self.active = true
-
-		self.debug = Debug("Part Created!")
-	end
-}
-
---BASE CLASS - Object
---PURPOSE - A base class for all  objects that appear in the world
---STATUS - MODERATELY FUNCTIONAL
-Object = Class{
-	init = function(self, x, y, w, h)
-		self.pos = vector.new(x, y)
-		self.w = w
-		self.h = h
-
-		--bool for if the function can be drawn or not
-		self.drawable = true
-
-		--physical body (parent, x, y, type of body, shape, wr, h)
-		self.p_body = PhysicsBody(self, self.pos.x, self.pos.y, "static", "rectangle", self.w, self.h)
-		--physics trigger
-		
-		--Interactable, if the object has it
-		--self.interact = interact or nil
-
-		--Leave an array for parts
-		self.parts = {}
-
-		self.obj_i = Object.obj_i + 1
-		Object.all[self.obj_i] = self
-		Object.obj_i = self.obj_i
-
-		self.debug = Debug("Object "..self.obj_i.." Spawned!")
-	end,
-	all = {}, obj_i = 0,
-
-	updateAll = function(dt)
-		for i = 1, Object.obj_i do
-			local current = Object.all[i]
-			current:update(dt)
-		end
-	end,
-
-	drawAll = function()
-		for i = 1, Object.obj_i do
-			local current = Object.all[i]
-			--do this later, for now, draw hitboxes
-			if current.drawable then
-				current:draw()
-			end
-			if current.debug.drawable then
-				love.graphics.setColor(current.debug.color)
-				love.graphics.rectangle("line", current.pos.x - (current.w/2), current.pos.y - (current.h/2), current.w, current.h)
-				love.graphics.setColor(255, 255, 255)
-
-				if current.p_trigger then
-					love.graphics.circle("line", current.pos.x, current.pos.y, current.p_trigger.shape:getRadius())
-				end
-			end
-		end
-	end
-}
-
---CLASS - Image
---[[Purpose - To add visual flair or communicate debug information (such as walking)
-to the player visually]]
---STATUS - WERE GETTING THERE
---[[INFO:
-	-filepath is FROM the images folder, since images should not be anywhere else within the game
-	-IMAGES MUST BE PNG
-]]
-Image = Class{__includes = Part,
-	init = function(self, parent, name, filepath)
-		Part.init(self, parent, name)
-		self.filepath = filepath
-		self.image = nil
-
-		self.loaded = false
-	end
-
-}
-
-function Image:load()
-	self.image = love.graphics.newImage("Assets/Images"..self.filepath..".png")
-	self.loaded = true
-end
-
-function Image:draw()
-	if self.loaded then love.graphics.draw(self.image, self.parent.pos.x, self.parent.pos.y) end
-end
-
---CLASS - Animation
---[[Purpose - To add visual flair and communicate information (such as walking)
-to the player visually]]
---STATUS
---[[INFO:
-	-speed based on frames i.e. 1 speed = 1 image per frame, 0.5 speed = 1 image per 2 frames
-	-file_path is FROM the images folder, since images should not be anywhere else within the game
-	-ANIMATIONS MUST BE PNG
-]] 
-Animation = Class{__includes = Part,
-	init = function(self, parent, name, filepath, frames, speed)
-		Part.init(self, parent, name)
-		self.filepath = filepath
-		self.images = {}
-		self.frames = frames
-		self.speed = speed
-		
-		self.loaded = false
-		self.current = 1
-		self.playing = false
-	end,
-}
-
-function Animation:load()
-	for i = 1, self.frames do
-		self.images[i] = love.graphics.newImage("Assets/Images"..self.filepath..i..".png")
-	end
-	self.loaded = true
-end
-
-function Animation:play()
-	self.playing = true
-end
-
-function Animation:pause()
-	self.playing = false
-end
-
-function Animation:draw()
-	local current_frame = self.images[math.floor(self.current)]
-	love.graphics.draw(current_frame, self.parent.pos.x, self.parent.pos.y)
-	--if not playing, pause the frame
-	if self.playing then
-		self.current = self.current + (0.1 * self.speed)
-		self.parent.debug.text = self.current
-		if self.current > self.frames + 1 then self.current = 1 end
-	end
-end
+require("baseClasses")
+require("physicsClasses")
+require("graphicsClasses")
 
 --CLASS - Quest
 --[[PURPOSE - Objects that control story beats.]]
@@ -183,12 +27,10 @@ Quest = {__includes = Part,
 	end
 }
 
---TODO CLASS Background = Class{}
-
 --CLASS - Player
 --[[PURPOSE - Allows the player to interact with the game world and
 enact most, if not all, mechanics]]
---MECHANICS - Walk (incomplete) and Talk (incomplete)
+--MECHANICS - Walk (getting there) and Talk (kinda works, need to seperate presses/holds)
 --STATUS - INCOMPLETE
 Player = Class{__includes = Object,
 	init = function(self, x, y)
@@ -271,7 +113,7 @@ NPC = Class{__includes = Object,
 	init = function(self, x, y, w, h, dialogue)
 		Object.init(self, x, y, w, h)
 		--create trigger zone and pass to interactable
-		self.p_trigger = PhysicsTrigger(self, self.p_body, "circle", self.w*1.5)
+		self.p_trigger = PhysicsTrigger(self, self.p_body, "circle", self.w*1.25)
 		self.interact = Talkable(self.p_trigger, dialogue)
 	end
 }
@@ -283,9 +125,6 @@ end
 function NPC:draw()
 	--draw npc?
 end
-
---Require files
-require("color_shortcut")
 
 --Require systemss
 require("window")
@@ -303,6 +142,35 @@ function love.load()
 	--screen.w = t.window.width
 	--screen.h = t.window.height
 
+	key_held = {}
+	key_held = { a = false,
+		b = false,
+		c = false,
+		d = false,
+		e = false,
+		f = false,
+		g = false,
+		h = false,
+		i = false,
+		j = false,
+		k = false,
+		l = false,
+		m = false,
+		n = false,
+		o = false,
+		p = false,
+		q = false,
+		r = false,
+		s = false,
+		t = false,
+		u = false,
+		v = false,
+		w = false,
+		x = false,
+		y = false,
+		z = false
+	}
+
 	Gamestate.registerEvents()
 	Gamestate.switch(debug_room)
 end
@@ -315,7 +183,17 @@ function love.draw()
 	--Object.drawAll()
 end
 
---physics engine callbacks
+function love.keypressed(key, scancode, isRepeat)
+	key_held[key] = true
+	player.debug.text = player.debug.text..key
+end
+
+function love.keyreleased(key, scancode, isRepeat)
+	key_held[key] = false
+	player.debug.text = key.." released."
+end
+
+--Physics engine callbacks
 function beginContact(fixtureA, fixtureB, contact)
 	--do player collisions
 	if fixtureA == player.p_body.fixture or fixtureB == player.p_body.fixture then
