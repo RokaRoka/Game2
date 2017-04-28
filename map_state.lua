@@ -17,22 +17,22 @@ function game_map:init()
 	texture.blank = texture[1]
 	texture[2] = love.graphics.newQuad(64, 0, 64, 64, texture.img:getDimensions())
 	texture.snow = texture[2]
-	texture[3] = love.graphics.newQuad(0, 64, 64, 64, texture.img:getDimensions())
+	texture[3] = love.graphics.newQuad(128, 0, 64, 64, texture.img:getDimensions())
 	texture.road = texture[3]
-	texture[4] = love.graphics.newQuad(64, 64, 64, 64, texture.img:getDimensions())
+	texture[4] = love.graphics.newQuad(0, 64, 64, 64, texture.img:getDimensions())
 	texture.grass = texture[4]
 
 	map1 = { --maps are 14 by 10
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row1
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row2
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row3
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row4
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row5
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row6
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row7
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row8
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row9
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1} --row10
+		{2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 4, 4},--row1
+		{2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 4, 4},--row2
+		{2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 4, 4},--row3
+		{2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 4, 4},--row4
+		{2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 4, 4},--row5
+		{2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 4, 4},--row6
+		{2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 4, 4},--row7
+		{4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4},--row8
+		{4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4},--row9
+		{4, 4, 4, 2, 2, 2, 2, 2, 2, 2, 2, 2, 4, 4} --row10
 	}
 end
 
@@ -122,18 +122,18 @@ function debug_room:init()
 
 	--initialize images
 	texture = {}
-	texture.img = love.graphics.newImage("Assets/Images/Textures/tile_snow.png")
+	texture.img = love.graphics.newImage("Assets/Images/Textures/tilemap_outside.png")
 	texture[1] = love.graphics.newQuad(0, 0, 64, 64, texture.img:getDimensions())
 	texture.blank = texture[1]
 	texture[2] = love.graphics.newQuad(64, 0, 64, 64, texture.img:getDimensions())
 	texture.snow = texture[2]
-	texture[3] = love.graphics.newQuad(0, 64, 64, 64, texture.img:getDimensions())
+	texture[3] = love.graphics.newQuad(128, 0, 64, 64, texture.img:getDimensions())
 	texture.road = texture[3]
-	texture[4] = love.graphics.newQuad(64, 64, 64, 64, texture.img:getDimensions())
+	texture[4] = love.graphics.newQuad(0, 64, 64, 64, texture.img:getDimensions())
 	texture.grass = texture[4]
 
 	map1 = { --maps are 14 by 10
-		{1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row1
+		{1, 2, 3, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row1
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},--row2
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
