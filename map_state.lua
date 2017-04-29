@@ -153,7 +153,8 @@ function debug_room:enter()
 	world = love.physics.newWorld(0, 0)
 	--set callbacks
 	world:setCallbacks(beginContact, endContact)
-
+	--create boundries
+	level_bounds = PhysicsBoundry(0, 0, 800, 600)
 
 	BG_debug = createMapTileBatch(map1) 
 
