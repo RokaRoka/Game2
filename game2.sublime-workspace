@@ -67,8 +67,17 @@
 			"file": "main.lua",
 			"settings":
 			{
-				"buffer_size": 5322,
+				"buffer_size": 5388,
 				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "map_state.lua",
+			"settings":
+			{
+				"buffer_size": 5947,
+				"line_ending": "Windows",
+				"name": "game_map = {}"
 			}
 		},
 		{
@@ -88,19 +97,10 @@
 			}
 		},
 		{
-			"file": "map_state.lua",
+			"file": "physicsClasses.lua",
 			"settings":
 			{
-				"buffer_size": 5881,
-				"line_ending": "Windows",
-				"name": "game_map = {}"
-			}
-		},
-		{
-			"file": "lightingShader.lua",
-			"settings":
-			{
-				"buffer_size": 534,
+				"buffer_size": 2201,
 				"line_ending": "Windows"
 			}
 		},
@@ -108,7 +108,15 @@
 			"file": "interactable.lua",
 			"settings":
 			{
-				"buffer_size": 1047,
+				"buffer_size": 1166,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "lightingShader.lua",
+			"settings":
+			{
+				"buffer_size": 534,
 				"line_ending": "Windows"
 			}
 		},
@@ -145,6 +153,7 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/hump/signal.lua",
 		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/window.lua",
 		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/color_shortcut.lua",
 		"/C/Users/Sam/Desktop/Sam Stuff/Personal Projects/Game2/conf.lua",
@@ -218,7 +227,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -226,15 +235,15 @@
 					"file": "main.lua",
 					"settings":
 					{
-						"buffer_size": 5322,
+						"buffer_size": 5388,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2287,
-								2287
+								3121,
+								3121
 							]
 						],
 						"settings":
@@ -243,13 +252,41 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 817.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "map_state.lua",
+					"settings":
+					{
+						"buffer_size": 5947,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5359,
+								5359
+							]
+						],
+						"settings":
+						{
+							"auto_name": "game_map = {}",
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2191.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "baseClasses.lua",
 					"settings":
 					{
@@ -260,8 +297,8 @@
 						"selection":
 						[
 							[
-								1822,
-								1822
+								1981,
+								1981
 							]
 						],
 						"settings":
@@ -270,13 +307,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 577.0,
+						"translation.y": 624.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 3,
 					"file": "graphicsClasses.lua",
 					"settings":
 					{
@@ -303,35 +340,61 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "map_state.lua",
+					"buffer": 4,
+					"file": "physicsClasses.lua",
 					"settings":
 					{
-						"buffer_size": 5881,
+						"buffer_size": 2201,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5355,
-								5355
+								215,
+								215
 							]
 						],
 						"settings":
 						{
-							"auto_name": "game_map = {}",
 							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2229.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
+					"file": "interactable.lua",
+					"settings":
+					{
+						"buffer_size": 1166,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1030,
+								1030
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Lua/Lua.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 330.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "lightingShader.lua",
 					"settings":
 					{
@@ -348,32 +411,6 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Lua/Lua.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "interactable.lua",
-					"settings":
-					{
-						"buffer_size": 1047,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								993,
-								993
-							]
-						],
-						"settings":
-						{
 							"syntax": "Packages/Lua/Lua.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -384,7 +421,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "conf.lua",
 					"settings":
 					{
