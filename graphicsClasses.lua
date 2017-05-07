@@ -64,6 +64,11 @@ function Animation:pause()
 	self.playing = false
 end
 
+function Animation:stop()
+	self.playing = false
+	self.current = 1
+end
+
 function Animation:draw()
 	local current_frame = self.images[math.floor(self.current)]
 	love.graphics.draw(current_frame, self.parent.pos.x - (self.parent.w/2), self.parent.pos.y - (self.parent.h/2))
@@ -76,3 +81,14 @@ function Animation:draw()
 end
 
 --TODO CLASS Background = Class{}
+function createMapTileBatch(arrayData)
+	local tileBatch = {}
+	tileBatch.sprBat = love.graphics.newSpriteBatch(texture.img, 140, "static")
+	for k, v in pairs(arrayData) do
+		for j, i in pairs(v) do
+			tileBatch.sprBat:add(texture[i], (j*64)-64, (k * 64) -64)
+		end
+	end
+
+	return tileBatch
+end

@@ -12,7 +12,7 @@ function game_map:init()
 
 	--initialize images
 	texture = {}
-	texture.img = love.graphics.newImage("Assets/Images/Textures/tile_snow.png")
+	texture.img = love.graphics.newImage("Assets/Images/Textures/tilemap_outside.png")
 	texture[1] = love.graphics.newQuad(0, 0, 64, 64, texture.img:getDimensions())
 	texture.blank = texture[1]
 	texture[2] = love.graphics.newQuad(64, 0, 64, 64, texture.img:getDimensions())
@@ -39,51 +39,35 @@ end
 function game_map:enter()
 	--create world
 	world = love.physics.newWorld(0, 0)
+	--set callbacks
+	world:setCallbacks(beginContact, endContact)
 
-	BG_southend = createMapTileBatch(map1) 
-	--[[
-	--create textures
-	firstSnow = {}
-	firstSnow.sprBat = love.graphics.newSpriteBatch(texture.snow, 16, "static")
-	--first row
-	firstSnow.tL = firstSnow.sprBat:add(0, 0)
-	firstSnow.tM1 = firstSnow.sprBat:add(64, 0)
-	firstSnow.tM2 = firstSnow.sprBat:add(64 + 64, 0)
-	firstSnow.tR = firstSnow.sprBat:add(64 + 64 + 64, 0)
-	--second row
-	firstSnow.mL = firstSnow.sprBat:add(0, 64)
-	firstSnow.mM1 = firstSnow.sprBat:add(64, 64)
-	firstSnow.mM2 = firstSnow.sprBat:add(64 + 64, 64)
-	firstSnow.mR = firstSnow.sprBat:add(64 + 64 + 64, 64)
-	--third row
-	firstSnow.m2L = firstSnow.sprBat:add(0, 64 + 64)
-	firstSnow.m2M1 = firstSnow.sprBat:add(64, 64 +64)
-	firstSnow.m2M2 = firstSnow.sprBat:add(64 + 64, 64 + 64)
-	firstSnow.m2R = firstSnow.sprBat:add(64 + 64 + 64, 64 + 64)
-	--forth row
-	firstSnow.bL = firstSnow.sprBat:add(0, 64 + 64 + 64)
-	firstSnow.bM1 = firstSnow.sprBat:add(64, 64 + 64 + 64)
-	firstSnow.bM2 = firstSnow.sprBat:add(64 + 64, 64 + 64 + 64)
-	firstSnow.bR = firstSnow.sprBat:add(64 + 64 + 64, 64 + 64 + 64)
-	]]
+	BG_southend = createMapTileBatch(map1)
+	
 	--create player
-	player = Player(50, 50)
+	player = Player(500, 500)
 	--create houses
 
 	--create interactables
+	NPC_npc1 = NPC(200, 100, 32, 32, {
+		"Hi. What are you doing out here?",
+		"It's kinda freezing. You should get inside.", 
+		"I'm fine, I've got a really warm coat.",
+		"There are many locals around. But they aren't really that friendly, good luck finding some heat."})
 
 	--create title of area
 	area_window = Window_Title("South End")
 
 	--dialogue stuff
 	Window_Dialogue.DW_Current = Window_Dialogue(
-		{"Home... Come home now. It is time to leave.",
-		"Do not make me wait...",
-		"Walk. You can talk with the locals with the Z key."}
+		{"... It is time to leave.",
+		"... Home should be close by",
+		"Walk. You can talk by using the Z key."}
 	)
 end
 
 function game_map:update(dt)
+	world:update(dt)
 	Object.updateAll(dt)
 	if Window_Dialogue.DW_Current then
 		Window_Dialogue.DW_Current:update(dt)
@@ -98,19 +82,6 @@ function game_map:draw()
 	if Window_Dialogue.DW_Current then
 		Window_Dialogue.DW_Current:draw()
 	end
-end
-
-
-function createMapTileBatch(arrayData)
-	local tileBatch = {}
-	tileBatch.sprBat = love.graphics.newSpriteBatch(texture.img, 140, "static")
-	for k, v in pairs(arrayData) do
-		for j, i in pairs(v) do
-			tileBatch.sprBat:add(texture[i], (j*64)-64, (k * 64) -64)
-		end
-	end
-
-	return tileBatch
 end
 
 function debug_room:init()

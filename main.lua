@@ -38,8 +38,10 @@ Player = Class{__includes = Object,
 		--walking anim
 		self.currentAnim = nil
 		--Anim (parent, name, filepath, frames, speed (discontinued))
-		self.parts[1] = Animation(self, "Walk", "/Player/player_walk", 4, 0.75)
+		self.parts[1] = Animation(self, "Idle", "/Player/player_idle", 1, 1)
 		self.parts[1]:load()
+		self.parts[2] = Animation(self, "Walk", "/Player/player_walk", 4, 0.75)
+		self.parts[2]:load()
 		self.currentAnim = self.parts[1]
 		self.currentAnim:play()
 
@@ -85,7 +87,12 @@ function Player:move(dt, dx, dy)
 	newPy = math.floor(newPy)
 
 	self.pos = vector.new(newPx, newPy)
-	--if newPx ~= 0 or newPy ~= 0 then newShader:send("player_pos", player.pos:unpack()) end
+	--[[if self.currentAnim.name == "Idle" and (newPx ~= 0 or newPy ~= 0) then 
+		self.currentAnim:stop()
+		self.currentAnim = self.parts[2]
+		self.currentAnim:play()
+		--newShader:send("player_pos", player.pos:unpack())
+	end]]
 	--self.pos = self.pos + delta * self.speed * dt
 end
 
@@ -173,7 +180,7 @@ function love.load()
 	}
 
 	Gamestate.registerEvents()
-	Gamestate.switch(debug_room)
+	Gamestate.switch(game_map)
 end
 
 function love.update(dt)
