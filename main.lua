@@ -117,7 +117,9 @@ NPC = Class{__includes = Object,
 		Object.init(self, x, y, w, h)
 		--create trigger zone and pass to interactable
 		self.p_trigger = PhysicsTrigger(self, self.p_body, "circle", self.w*1.25)
-		self.interact = Talkable(self.p_trigger, dialogue)
+
+		self.parts[1] = Quest(self, "Key-Door1", false)
+		self.interact = Talkable(self.p_trigger, dialogue, self.parts[1])
 	end
 }
 

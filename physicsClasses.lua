@@ -31,3 +31,25 @@ PhysicsTrigger = Class{
 		--self.fixture:setMask(layers.boundry, layers.wall)
 	end
 }
+
+PhysicsBoundry = Class{
+	init = function(self, x, y, w, h)
+		self.body = love.physics.newBody(world, x, y, "kinematic")
+		self.edges = {}
+
+		--norhtmost
+		self.edges[1] = love.physics.newEdgeShape(x, y, x + w, y)
+		--eastmost
+		self.edges[2] = love.physics.newEdgeShape(x + w, y, x + w, y + h)
+		--southmost
+		self.edges[3] = love.physics.newEdgeShape(x + w, y + h, x, y + h)
+		--westmost
+		self.edges[4] = love.physics.newEdgeShape(x, y + h, x, y)
+
+		self.fixtures = {}
+		self.fixtures[1] = love.physics.newFixture(self.body, self.edges[1])
+		self.fixtures[2] = love.physics.newFixture(self.body, self.edges[2])
+		self.fixtures[3] = love.physics.newFixture(self.body, self.edges[3])
+		self.fixtures[4] = love.physics.newFixture(self.body, self.edges[4])
+	end
+}
